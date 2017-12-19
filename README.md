@@ -39,7 +39,7 @@ func complexFunc(completion: @escaping (Bool) -> Void) {
 
 Caveats:
   - the simple functions MUST be able to run simultaneously without affecting each other
-  - the result of the simple functions must be `Bool`
+  - `key.result` is only a simple `Bool`
   - this is not an answer to [callback hell](http://callbackhell.com/)
 
 ### Set Up
