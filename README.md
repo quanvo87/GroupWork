@@ -2,6 +2,14 @@
 
 Swift module that helps with running multiple, concurrent, asynchronous tasks in a clean way.
 
+[![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)](https://swift.org)
+[![CocoaPods Version Status](https://img.shields.io/cocoapods/v/GroupWork.svg)](https://cocoapods.org/pods/GroupWork)
+[![CocoaPods](https://img.shields.io/cocoapods/dt/GroupWork.svg)](https://cocoapods.org/pods/GroupWork)
+[![CocoaPods](https://img.shields.io/cocoapods/dm/GroupWork.svg)](https://cocoapods.org/pods/GroupWork)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://travis-ci.org/quanvo87/GroupWork.svg?branch=master)](https://travis-ci.org/quanvo87/GroupWork)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
+
 ## Contents
 
 1. [Requirements](#requirements)
@@ -18,7 +26,7 @@ Swift module that helps with running multiple, concurrent, asynchronous tasks in
 
 ## Requirements
 
-Swift 4
+[Swift 4](https://swift.org/)
 
 ## Installation
 
@@ -27,7 +35,7 @@ Swift 4
 For [CocoaPods](http://cocoapods.org/), add to `Podfile`:
 
 ```ruby
-pod 'GroupWork', '~> 0.0.3'
+pod 'GroupWork', '~> 0.0'
 ```
 
 #### Carthage
@@ -66,9 +74,9 @@ import GroupWork
 func complexFunc(completion: @escaping (Bool) -> Void) {
   let work = GroupWork()
 
-  work.simpleFuncA()
-  work.simpleFuncB()
-  work.simpleFuncC()
+  work.asyncFuncA()
+  work.asyncFuncB()
+  work.asyncFuncC()
 
   work.allDone() {
     completion(work.result)
@@ -78,10 +86,10 @@ func complexFunc(completion: @escaping (Bool) -> Void) {
 ...
 ```
 
-`complexFunc` is a function that returns the result of three simple, asynchronous functions `simpleFuncA()`, `simpleFuncB()`, and `simpleFuncC()`, which run concurrently. The completion handler is called only when all the simple functions have completed. Usage of this library has enabled the above clean interface. This can be scaled to much higher than three simple functions.
+`complexFunc` is a function that returns the result of three asynchronous functions `asyncFuncA()`, `asyncFuncB()`, and `asyncFuncC()`, running concurrently. The completion handler is called only when all these functions have completed. Usage of this library has enabled the above clean interface. This can be scaled to much higher than three asynchronous functions.
 
-Caveats:
-  - the simple functions MUST be able to run simultaneously without affecting each other
+notes:
+  - the asynchronous functions should be able to run concurrently without affecting each other
   - `work.result` is only a simple `Bool`
   - this is not an answer to [callback hell](http://callbackhell.com/)
 
@@ -93,21 +101,21 @@ There is some set up required in order to create `complexFunc()` from above:
 import GroupWork
 
 extension GroupWork {
-  func simplefuncA() {
+  func asyncFuncA() {
     start()
     networkCallA() { (result)
       self.finish(withResult: result)
     }
   }
 
-  func simplefuncB() {
+  func asyncFuncB() {
     start()
     networkCallB() { (result)
       self.finish(withResult: result)
     }
   }
 
-  func simplefuncC() {
+  func asyncFuncC() {
     start()
     networkCallC() { (result)
       self.finish(withResult: result)
@@ -118,14 +126,14 @@ extension GroupWork {
 
 Now you can create a `GroupWork`, and call `work.simpleFuncA()` on it like in the example.
 
-Caveats:
-  - notice that in each function, `start()` is called before each asynchronous task
-  - `finish(withResult:)` is called in the completion handler of each asynchronous task
-  - `start()` and `finish()` calls MUST be balanced
+notes:
+  - `start()` must be called before an asynchronous task
+  - `finish()` must be called in the completion handler of an asynchronous
+  - `start()` and `finish()` calls must be balanced
 
 ## Working Example
 
-The [tests]() have a working example.
+The [tests](GroupWorkTests/GroupWorkTests.swift) have a working example.
 
 ## License
 [MIT](http://opensource.org/licenses/MIT) [LICENSE](LICENSE)
