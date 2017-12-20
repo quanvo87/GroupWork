@@ -1,60 +1,34 @@
 /// Used to perform groups of work and keep track of the results.
-public typealias Key = String
+public class GroupWork {
+    private let group = DispatchGroup()
 
-struct GroupWorkDictionary {
-    static var dictionary: [Key: (group: DispatchGroup, result: Bool)] = {
-        return [Key: (group: DispatchGroup, result: Bool)]()
-    }()
-}
+    /// The current result of the work items.
+    public var result = true
 
-/// Used to perform groups of work and keep track of the results.
-public extension Key {
+    /// Initializes a `GroupWork`.
+    public init() {}
 
-    /// The current result of the `Key`'s work items. Each time a `Key`'s work
-    /// item completes, it `&&`'s its result with this property. `result` begins
-    /// as `true` for new `Key`s. Returns false if called on an invalid `Key`.
-    public var result: Bool {
-        return GroupWorkDictionary.dictionary[self]?.result ?? false
-    }
-
-    /// Returns a new `Key`.
-    public static func make() -> Key {
-        let key = UUID().uuidString
-        GroupWorkDictionary.dictionary[key] = (DispatchGroup(), true)
-        return key
-    }
-
-    /// Indicates that some work has just started for the `Key`. A call to
-    /// `start()` must be proceeded by a call to `finish()` eventually.
+    /// Should be called before some asynchronous work begins.
     public func start() {
-        GroupWorkDictionary.dictionary[self]?.group.enter()
+        group.enter()
     }
 
-    /// Indicates that some work has just finished for the `Key`. A call to
-    /// `finish()` must proceed a call to `start()`.
+    /// Should be called after some asynchronous work is done.
     ///
     /// - parameter result: The `Bool` result of the work that just finished.
-    ///                     This will get `&&`'d to the current `result` for the `Key`.
-    public func finish(withResult result: Bool = true) {
-        GroupWorkDictionary.dictionary[self]?.result = self.result && result
-        GroupWorkDictionary.dictionary[self]?.group.leave()
+    ///                     This will get `&&`'d with the current `result`.
+    public func finish(withResult result: Bool) {
+        let oldResult = self.result
+        self.result = oldResult && result
+        group.leave()
     }
 
-    /// Used to pass in a function that should be called when ALL work for a
-    /// `Key` is done.
+    /// Handles what to do once all work is done.
     ///
-    /// - parameter completion: The function to be executed when ALL work for a
-    ///                         `Key` is done. Typically, `remove()` should be
-    ///                         called somewhere in the body of this function.
+    /// - parameter completion: The function to be executed when ALL work is done.
     public func allDone(completion: @escaping () -> Void) {
-        GroupWorkDictionary.dictionary[self]?.group.notify(queue: .main) {
+        group.notify(queue: .main) {
             completion()
         }
-    }
-
-    /// Removes a `Key`'s data. This should be called to clean up resources when
-    /// done with a `Key`. A `Key` should not be used after this function is called.
-    public func remove() {
-        GroupWorkDictionary.dictionary.removeValue(forKey: self)
     }
 }
