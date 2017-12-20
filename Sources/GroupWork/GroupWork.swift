@@ -1,3 +1,5 @@
+import Dispatch
+
 /// Used to perform groups of work and keep track of the results.
 public class GroupWork {
     private let group = DispatchGroup()
