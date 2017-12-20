@@ -1,36 +1,44 @@
-//
-//  GroupWorkTests.swift
-//  GroupWorkTests
-//
-//  Created by Quan Vo on 12/18/17.
-//  Copyright © 2017 Quan Vo. All rights reserved.
-//
-
 import XCTest
-@testable import GroupWork
+import GroupWork
 
 class GroupWorkTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test() {
+        let expectation = self.expectation(description: #function)
+
+        let work = GroupWork()
+
+        work.google()
+        work.yahoo()
+
+        work.allDone {
+            print(work.result)
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 10)
     }
-    
+}
+
+extension GroupWork {
+    func google() {
+        start()
+        URLSession.shared.dataTask(with: URL(string: "https://google.com")!) { (_, response, _) in
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                self.finish(withResult: true)
+            } else {
+                self.finish(withResult: false)
+            }
+            }.resume()
+    }
+
+    func yahoo() {
+        start()
+        URLSession.shared.dataTask(with: URL(string: "https://yahoo.com")!) { (_, response, _) in
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                self.finish(withResult: true)
+            } else {
+                self.finish(withResult: false)
+            }
+            }.resume()
+    }
 }
