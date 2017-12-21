@@ -50,7 +50,7 @@ github "quanvo87/GroupWork"
 For [SPM](https://swift.org/package-manager/), add to your package dependencies:
 
 ```
-.package(url: "https://github.com/quanvo87/GroupWork.git", .upToNextMinor(from: "0.0.0")),
+.package(url: "https://github.com/quanvo87/GroupWork.git", .upToNextMinor(from: "0.0.0"))
 ```
 
 #### Manually
@@ -128,7 +128,7 @@ Now you can create a `GroupWork`, and call `work.simpleFuncA()` on it like in th
 
 notes:
   - `start()` must be called before an asynchronous task
-  - `finish()` must be called in the completion handler of an asynchronous
+  - `finish()` must be called in the completion handler of an asynchronous task
   - `start()` and `finish()` calls must be balanced
 
 ## Working Example
