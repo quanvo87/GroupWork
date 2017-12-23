@@ -21,7 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		OBJ_21 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_27 /* GroupWorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* GroupWorkTests.swift */; };
 		OBJ_29 /* GroupWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "GroupWork::GroupWork::Product" /* GroupWork.framework */; };
 		OBJ_36 /* GroupWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* GroupWork.swift */; };
@@ -48,7 +47,6 @@
 		"GroupWork::GroupWork::Product" /* GroupWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GroupWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"GroupWork::GroupWorkTests::Product" /* GroupWorkTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GroupWorkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_12 /* GroupWorkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupWorkTests.swift; sourceTree = "<group>"; };
-		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* GroupWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupWork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,15 +95,13 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_10 /* Tests */,
 				OBJ_13 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -190,7 +186,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_13 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,7 +204,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_21 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

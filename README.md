@@ -1,6 +1,6 @@
-# GroupWork
-
-Swift module that helps with running multiple, concurrent, asynchronous tasks in a clean way.
+<p align="center">
+  <img src="Assets/banner.jpg" title="GroupWork">
+</p>
 
 [![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)](https://swift.org)
 [![CocoaPods Version Status](https://img.shields.io/cocoapods/v/GroupWork.svg)](https://cocoapods.org/pods/GroupWork)
@@ -9,6 +9,8 @@ Swift module that helps with running multiple, concurrent, asynchronous tasks in
 [![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Build Status](https://travis-ci.org/quanvo87/GroupWork.svg?branch=master)](https://travis-ci.org/quanvo87/GroupWork)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
+
+GroupWork is an easy to use Swift framework that helps you orchestrate your concurrent, asynchronous functions in a clean and organized way. This helps make large functions with multiple asynchronous tasks more clear and easy to follow.
 
 ## Contents
 
@@ -60,7 +62,7 @@ For [SPM](https://swift.org/package-manager/), add to your package dependencies:
 
 ## Documentation
 
-[Here]()
+[Here](quanvo87.github.io/GroupWork)
 
 ## Example Usage
 
@@ -133,13 +135,15 @@ notes:
 
 ## Working Example
 
-The [tests](GroupWorkTests/GroupWorkTests.swift) have a working example.
+The [tests](Tests/GroupWorkTests/GroupWorkTests.swift) have a working example.
 
 ## License
 [MIT](http://opensource.org/licenses/MIT) [LICENSE](LICENSE)
 
 ## Authors
 
-[Quan Vo](https://github.com/quanvo87), [Wilson Ding](https://github.com/dingwilson)
+- [Quan Vo](https://github.com/quanvo87)
+- [Wilson Ding](https://github.com/dingwilson)
+- Banner: [Michelle Law](http://dropr.com/mlaw)
 
 *Please provide attribution, it is greatly appreciated.*

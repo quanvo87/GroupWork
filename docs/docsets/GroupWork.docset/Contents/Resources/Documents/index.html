@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GroupWork  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="GroupWork  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">GroupWork Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/quanvo87/GroupWork"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">GroupWork Reference</a>
+        <img id="carat" src="img/carat.png" />
+        GroupWork  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/GroupWork.html">GroupWork</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p align="center">
+  <img src="Assets/banner.jpg" title="GroupWork">
+</p>
+
+<p><a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.0-orange.svg" alt="Swift"></a>
+<a href="https://cocoapods.org/pods/GroupWork"><img src="https://img.shields.io/cocoapods/v/GroupWork.svg" alt="CocoaPods Version Status"></a>
+<a href="https://cocoapods.org/pods/GroupWork"><img src="https://img.shields.io/cocoapods/dt/GroupWork.svg" alt="CocoaPods"></a>
+<a href="https://cocoapods.org/pods/GroupWork"><img src="https://img.shields.io/cocoapods/dm/GroupWork.svg" alt="CocoaPods"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat" alt="Carthage compatible"></a>
+<a href="https://travis-ci.org/quanvo87/GroupWork"><img src="https://travis-ci.org/quanvo87/GroupWork.svg?branch=master" alt="Build Status"></a>
+<a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a></p>
+
+<p>GroupWork is an easy to use Swift framework that helps you orchestrate your concurrent, asynchronous functions in a clean and organized way. This helps make large functions with multiple asynchronous tasks more clear and easy to follow.</p>
+<h2 id='contents' class='heading'>Contents</h2>
+
+<ol>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a>
+
+<ul>
+<li><a href="#cocoapods">CocoaPods</a></li>
+<li><a href="#carthage">Carthage</a></li>
+<li><a href="#swift-package-manager">Swift Package Manager</a></li>
+<li><a href="#manually">Manually</a></li>
+</ul></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#example-usage">Example Usage</a></li>
+<li><a href="#working-example">Working Example</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#authors">Authors</a></li>
+</ol>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<p><a href="https://swift.org/">Swift 4</a></p>
+<h2 id='installation' class='heading'>Installation</h2>
+<h4 id='cocoapods' class='heading'>CocoaPods</h4>
+
+<p>For <a href="http://cocoapods.org/">CocoaPods</a>, add to <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'GroupWork'</span><span class="p">,</span> <span class="s1">'~&gt; 0.0'</span>
+</code></pre>
+<h4 id='carthage' class='heading'>Carthage</h4>
+
+<p>For <a href="https://github.com/Carthage/Carthage">Carthage</a>, add to <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "quanvo87/GroupWork"
+</code></pre>
+<h4 id='swift-package-manager' class='heading'>Swift Package Manager</h4>
+
+<p>For <a href="https://swift.org/package-manager/">SPM</a>, add to your package dependencies:</p>
+<pre class="highlight plaintext"><code>.package(url: "https://github.com/quanvo87/GroupWork.git", .upToNextMinor(from: "0.0.0"))
+</code></pre>
+<h4 id='manually' class='heading'>Manually</h4>
+
+<ul>
+<li>for projects, drag <code>GroupWork.swift</code> to the project tree</li>
+<li>for workspaces, include the whole <code>GroupWork.xcodeproj</code></li>
+</ul>
+<h2 id='documentation' class='heading'>Documentation</h2>
+
+<p><a href="quanvo87.github.io/GroupWork">Here</a></p>
+<h2 id='example-usage' class='heading'>Example Usage</h2>
+<h4 id='end-goal' class='heading'>End Goal</h4>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">GroupWork</span>
+
+<span class="o">...</span>
+
+<span class="kd">func</span> <span class="nf">complexFunc</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">work</span> <span class="o">=</span> <span class="kt">GroupWork</span><span class="p">()</span>
+
+  <span class="n">work</span><span class="o">.</span><span class="nf">asyncFuncA</span><span class="p">()</span>
+  <span class="n">work</span><span class="o">.</span><span class="nf">asyncFuncB</span><span class="p">()</span>
+  <span class="n">work</span><span class="o">.</span><span class="nf">asyncFuncC</span><span class="p">()</span>
+
+  <span class="n">work</span><span class="o">.</span><span class="nf">allDone</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">completion</span><span class="p">(</span><span class="n">work</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">...</span>
+</code></pre>
+
+<p><code>complexFunc</code> is a function that returns the result of three asynchronous functions <code>asyncFuncA()</code>, <code>asyncFuncB()</code>, and <code>asyncFuncC()</code>, running concurrently. The completion handler is called only when all these functions have completed. Usage of this library has enabled the above clean interface. This can be scaled to much higher than three asynchronous functions.</p>
+
+<p>notes:</p>
+
+<ul>
+<li>the asynchronous functions should be able to run concurrently without affecting each other</li>
+<li><code>work.result</code> is only a simple <code>Bool</code></li>
+<li>this is not an answer to <a href="http://callbackhell.com/">callback hell</a></li>
+</ul>
+<h4 id='set-up' class='heading'>Set Up</h4>
+
+<p>There is some set up required in order to create <code>complexFunc()</code> from above:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">GroupWork</span>
+
+<span class="kd">extension</span> <span class="kt">GroupWork</span> <span class="p">{</span>
+  <span class="kd">func</span> <span class="nf">asyncFuncA</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">start</span><span class="p">()</span>
+    <span class="nf">networkCallA</span><span class="p">()</span> <span class="p">{</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span>
+      <span class="k">self</span><span class="o">.</span><span class="nf">finish</span><span class="p">(</span><span class="nv">withResult</span><span class="p">:</span> <span class="n">result</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">func</span> <span class="nf">asyncFuncB</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">start</span><span class="p">()</span>
+    <span class="nf">networkCallB</span><span class="p">()</span> <span class="p">{</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span>
+      <span class="k">self</span><span class="o">.</span><span class="nf">finish</span><span class="p">(</span><span class="nv">withResult</span><span class="p">:</span> <span class="n">result</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">func</span> <span class="nf">asyncFuncC</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">start</span><span class="p">()</span>
+    <span class="nf">networkCallC</span><span class="p">()</span> <span class="p">{</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span>
+      <span class="k">self</span><span class="o">.</span><span class="nf">finish</span><span class="p">(</span><span class="nv">withResult</span><span class="p">:</span> <span class="n">result</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Now you can create a <code><a href="Classes/GroupWork.html">GroupWork</a></code>, and call <code>work.simpleFuncA()</code> on it like in the example.</p>
+
+<p>notes:</p>
+
+<ul>
+<li><code>start()</code> must be called before an asynchronous task</li>
+<li><code>finish()</code> must be called in the completion handler of an asynchronous task</li>
+<li><code>start()</code> and <code>finish()</code> calls must be balanced</li>
+</ul>
+<h2 id='working-example' class='heading'>Working Example</h2>
+
+<p>The <a href="Tests/GroupWorkTests/GroupWorkTests.swift">tests</a> have a working example.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p><a href="http://opensource.org/licenses/MIT">MIT</a> <a href="LICENSE">LICENSE</a></p>
+<h2 id='authors' class='heading'>Authors</h2>
+
+<ul>
+<li><a href="https://github.com/quanvo87">Quan Vo</a></li>
+<li><a href="https://github.com/dingwilson">Wilson Ding</a></li>
+<li>Banner: <a href="http://dropr.com/mlaw">Michelle Law</a></li>
+</ul>
+
+<p><em>Please provide attribution, it is greatly appreciated.</em></p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/quanvo87/GroupWork" target="_blank" rel="external">Quan Vo and Wilson Ding</a>. All rights reserved. (Last updated: 2017-12-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

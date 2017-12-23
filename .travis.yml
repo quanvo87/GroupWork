@@ -6,3 +6,9 @@ script:
   - swift build
   - swift test
   
+notifications:
+  email:
+    recipients:
+      - qvo1987@gmail.com
+    on_success: always
+    

@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name         = "GroupWork"
-  s.version      = "0.0.5"
-  s.summary      = "Swift module that helps with running multiple, concurrent, asynchronous tasks in a clean way."
-  s.description  = "Swift module that helps with running multiple, concurrent, asynchronous tasks in a clean way. Better description inc."
+  s.version      = "0.0.6"
+  s.summary      = "Easy concurrent, asynchronous tasks in Swift."
+  s.description  = "GroupWork is an easy to use Swift framework that helps you orchestrate your concurrent, asynchronous functions in a clean and organized way. This helps make large functions with multiple asynchronous tasks more clear and easy to follow."
   s.homepage     = "https://github.com/quanvo87/GroupWork"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Quan Vo" => "qvo1987@gmail.com",

@@ -1,0 +1,5 @@
+module: GroupWork
+github_url: https://github.com/quanvo87/GroupWork
+
+clean: true
+xcodebuild_arguments: [-scheme,GroupWork]
