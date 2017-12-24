@@ -62,7 +62,7 @@ For [SPM](https://swift.org/package-manager/), add to your package dependencies:
 
 ## Documentation
 
-[Here](quanvo87.github.io/GroupWork)
+[Here](https://quanvo87.github.io/GroupWork/)
 
 ## Example Usage
 
