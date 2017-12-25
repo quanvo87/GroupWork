@@ -2,6 +2,8 @@
   <img src="Assets/banner.jpg" title="GroupWork">
 </p>
 
+![iOS](https://img.shields.io/badge/os-iOS-green.svg?style=flat)
+![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
 [![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)](https://swift.org)
 [![CocoaPods Version Status](https://img.shields.io/cocoapods/v/GroupWork.svg)](https://cocoapods.org/pods/GroupWork)
 [![CocoaPods](https://img.shields.io/cocoapods/dt/GroupWork.svg)](https://cocoapods.org/pods/GroupWork)

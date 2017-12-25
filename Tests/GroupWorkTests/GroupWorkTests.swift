@@ -1,17 +1,21 @@
 import XCTest
 import GroupWork
 
+#if os(Linux)
+    import Dispatch
+#endif
+
 class GroupWorkTests: XCTestCase {
     func test() {
         let expectation = self.expectation(description: #function)
 
         let work = GroupWork()
 
-        work.google()
-        work.yahoo()
+        work.shortAsync()
+        work.longAsync()
 
         work.allDone {
-            print(work.result)
+            XCTAssert(work.result)
             expectation.fulfill()
         }
 
@@ -20,25 +24,28 @@ class GroupWorkTests: XCTestCase {
 }
 
 extension GroupWork {
-    func google() {
+    func shortAsync() {
         start()
-        URLSession.shared.dataTask(with: URL(string: "https://google.com")!) { (_, response, _) in
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                self.finish(withResult: true)
-            } else {
-                self.finish(withResult: false)
-            }
-            }.resume()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            self.finish(withResult: true)
+        }
     }
 
-    func yahoo() {
+    func longAsync() {
         start()
-        URLSession.shared.dataTask(with: URL(string: "https://yahoo.com")!) { (_, response, _) in
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                self.finish(withResult: true)
-            } else {
-                self.finish(withResult: false)
-            }
-            }.resume()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            self.finish(withResult: true)
+        }
     }
 }
+
+#if os(Linux)
+    extension GroupWorkTests {
+        static var allTests: [(String, (GroupWorkTests) -> () throws -> Void)] {
+            return [
+                ("test", test)
+            ]
+        }
+    }
+#endif
+
