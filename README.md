@@ -107,21 +107,21 @@ import GroupWork
 extension GroupWork {
   func asyncFuncA() {
     start()
-    networkCallA() { (result)
+    networkCallA() { (result) in
       self.finish(withResult: result)
     }
   }
 
   func asyncFuncB() {
     start()
-    networkCallB() { (result)
+    networkCallB() { (result) in
       self.finish(withResult: result)
     }
   }
 
   func asyncFuncC() {
     start()
-    networkCallC() { (result)
+    networkCallC() { (result) in
       self.finish(withResult: result)
     }
   }
